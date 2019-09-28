@@ -3,8 +3,8 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/NoticeRuleLWC": [
-                "NoticeRuleLWC/NoticeRuleLWC.js"
+            "c/noticeRuleLWC": [
+                "noticeRuleLWC/noticeRuleLWC.js"
             ]
         }
     },
