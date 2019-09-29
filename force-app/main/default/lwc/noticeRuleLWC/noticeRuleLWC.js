@@ -40,11 +40,13 @@ export default class noticeRuleLWC extends NavigationMixin(LightningElement) {
         let options = [];
         Object.keys(data.fields).forEach( key => {
             const field = data.fields[key];
-            const opt = {
-                label: field.label,
-                value: field.apiName
+            if (field.updateable) {
+                const opt = {
+                    label: field.label,
+                    value: field.apiName
+                }
+                options.push(opt);
             }
-            options.push(opt);
         });
         options.sort( (a, b) => {
             const aLabel = a.label.toUpperCase();
