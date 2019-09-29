@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { LightningElement, track, wire, api } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import { NavigationMixin } from 'lightning/navigation';
@@ -9,7 +9,9 @@ import LEAD_OBJECT from '@salesforce/schema/Lead';
 
 export default class noticeRuleLWC extends NavigationMixin(LightningElement) {
     @track error;    
-    @api targetField;
+    @track targetField;
+    @track targetChange;
+    @track showTargeValue;
     @track fieldOptions;
     objFields = {};
 
@@ -34,7 +36,7 @@ export default class noticeRuleLWC extends NavigationMixin(LightningElement) {
             this.error = error;
         }
     }
-    
+
     // Return sorted array of select options
     createFieldOptions(data) {
         let options = [];
@@ -58,11 +60,16 @@ export default class noticeRuleLWC extends NavigationMixin(LightningElement) {
         return options;
     }
 
-    handleRecTypeChange(event) {
+    handleRecTypeUpdate(event) {
         this.fieldOptions = this.objFields[event.target.value];
     }
 
-    handleFieldChange(event) {
+    handleChangeTypeUpdate(event) {
+        this.targetChange = event.target.value;
+        this.showTargetValue = (this.targetChange !== 'Any change');
+    }
+
+    handleFieldUpdate(event) {
         this.targetField = event.target.value;
     }
 
