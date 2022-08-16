@@ -2,8 +2,7 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="NoticeRuleLWC">
     <apiVersion>55.0</apiVersion>
     <isExposed>true</isExposed>
-    <masterLabel>noticeRuleLWC</masterLabel>
-    <description>noticeRuleLWC</description>
+
     <targets>
         <target>lightning__RecordPage</target>
         <target>lightning__HomePage</target>
